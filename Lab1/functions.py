@@ -1,13 +1,18 @@
-def displayInstructions():
+def display_instructions():
     # display instructions
-    print('Welcome to Tic-tac-toe')
-    print('')
+    print('\nWelcome to Tic-Tac-Toe\nTry to get 3 in a row!')
 
-def initBoard(board):
-    getMove(board, 0)
+def init_board(board):
+    for idx, value in enumerate(board):
+        board[idx] = ''
 
+def player_name(player):
+    if player == 0:
+        return 'X'
+    else:
+        return 'O'
 
-def showBoard(board):
+def show_board(board):
     for idx, value in enumerate(board):
         if value == '':
             value = str(idx+1)
@@ -17,58 +22,111 @@ def showBoard(board):
             print('[' + value + ']', end='')
     print('')
 
-def validMoves(board):
+def valid_moves(board):
     validMoves = []
     for idx, value in enumerate(board):
         if value == '':
             validMoves.append(idx+1)
     return validMoves
 
-def getMove(board, player):
+def get_move(board, player):
     # get move
-    playerChar = 'X'
     if player == 0:
-        print("It's X's turn\n")
+        player_char = 'X'
+        print("\nIt's X's turn\n")
     else:
-        playerChar = 'O'
-        print("It's O's turn\n")
-    showBoard(board)
+        player_char = 'O'
+        print("\nIt's O's turn\n")
+    show_board(board)
 
-    valid = validMoves(board)
+    valid = valid_moves(board)
     while True:
         print("Move: ")
         choice = input()
-        choiceInt = int(choice)
-        if choiceInt in valid:
-            board[choiceInt-1] = playerChar
+        choice_int = int(choice)
+        if choice_int in valid:
+            board[choice_int-1] = player_char
             break
         else:
             print("Please choose a valid move")
-            showBoard(board)
-    showBoard(board)
-    
+            show_board(board)
 
-    # get a move from player
-        #validate the move is an integer and in range
-        #verify that location is currently empty
-        #update that location on the board with the player’s marker
-    #does not have an explicit return, the board is updated via reference
+def check_win(board):
+    if board[4] == board[0] and board[4] != '':
+        if board[4] == board[8]:
+            board[0] = '\\'
+            board[4] = '\\'
+            board[8] = '\\'
+            show_board(board)
+            return True
+    if board[4] == board[2] and board[4] != '':
+        if board[4] == board[6]:
+            board[2] = '/'
+            board[4] = '/'
+            board[6] = '/'
+            show_board(board)
+            return True
+    if board[4] == board[1] and board[4] != '':
+        if board[4] == board[7]:
+            board[1] = '|'
+            board[4] = '|'
+            board[7] = '|'
+            show_board(board)
+            return True
+    if board[0] == board[3] and board[0] != '':
+        if board[0] == board[6]:
+            board[0] = '|'
+            board[3] = '|'
+            board[6] = '|'
+            show_board(board)
+            return True
+    if board[8] == board[5] and board[8] != '':
+        if board[8] == board[2]:
+            board[2] = '|'
+            board[5] = '|'
+            board[8] = '|'
+            show_board(board)
+            return True
+    if board[8] == board[7] and board[8] != '':
+        if board[8] == board[6]:
+            board[6] = '-'
+            board[7] = '-'
+            board[8] = '-'
+            show_board(board)
+            return True
+    if board[4] == board[3] and board[4] != '':
+        if board[4] == board[5]:
+            board[3] = '-'
+            board[4] = '-'
+            board[5] = '-'
+            show_board(board)
+            return True
+    if board[0] == board[1] and board[0] != '':
+        if board[0] == board[2]:
+            board[0] = '-'
+            board[1] = '-'
+            board[2] = '-'
+            show_board(board)
+            return True
+    return False
 
-def checkWin(board):
-    1,2,3
-    4,5,6
-    7,8,9
+def check_draw(board):
+    if check_win(board) == False:
+        return True
 
-    
+def play_again():
+    return yes_no("Do you want to play again? (y/n)")
 
-    
-
-#def checkDraw():
-    #draw
-
-#def playAgain():
-    #playagain?
-
-#def yesNo():
-    #yes no
-
+def yes_no(question):
+    valid = ['y', 'n']
+    while True:
+        print(question)
+        choice = input()
+        choice = choice.lower()
+        if choice in valid:
+            if choice == 'y':
+                return True
+            else:
+                return False
+        else:
+            print("Please type y or n")
