@@ -2,7 +2,6 @@
 #It will then report which player won and ask if they want to play another game and repeat if yes.
 
 from functions import *
-from constant import *
 
 def main():
     board = ['','','','','','','','','']
