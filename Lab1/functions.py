@@ -1,17 +1,21 @@
+# Display instructions
 def display_instructions():
-    # display instructions
     print('\nWelcome to Tic-Tac-Toe\nTry to get 3 in a row!')
 
+# Reset board, rewrites the board list with ''
 def init_board(board):
     for idx, value in enumerate(board):
         board[idx] = ''
 
+# Get the player name, Returns X or O
+# Adds the possibility of letting players type their own names in.
 def player_name(player):
     if player == 0:
         return 'X'
     else:
         return 'O'
 
+# Display the board
 def show_board(board):
     for idx, value in enumerate(board):
         if value == '':
@@ -22,6 +26,7 @@ def show_board(board):
             print('[' + value + ']', end='')
     print('')
 
+# Returns the valid move
 def valid_moves(board):
     validMoves = []
     for idx, value in enumerate(board):
@@ -29,17 +34,16 @@ def valid_moves(board):
             validMoves.append(idx+1)
     return validMoves
 
+# Enter the player's move
 def get_move(board, player):
-    # get move
-    if player == 0:
-        player_char = 'X'
-        print("\nIt's X's turn\n")
-    else:
-        player_char = 'O'
-        print("\nIt's O's turn\n")
+    # Print player's name, calling function
+    print("\nIt's " + player_name(player) + "'s turn\n")
+
     show_board(board)
 
+    # Get a list of valid moves for the current board
     valid = valid_moves(board)
+    # Enter the players move into the list
     while True:
         print("Move: ")
         choice = input()
@@ -51,9 +55,12 @@ def get_move(board, player):
             print("Please choose a valid move")
             show_board(board)
 
+# Check win condition, returns true or false
 def check_win(board):
+    # Check two squares, if they are the same then check the next in the sequence
     if board[4] == board[0] and board[4] != '':
         if board[4] == board[8]:
+            # Player won, change the array to display a line where they won.
             board[0] = '\\'
             board[4] = '\\'
             board[8] = '\\'
@@ -110,13 +117,16 @@ def check_win(board):
             return True
     return False
 
+# Check draw, if no win's then return true
 def check_draw(board):
     if check_win(board) == False:
         return True
 
+# Play again question
 def play_again():
     return yes_no("Do you want to play again? (y/n)")
 
+# Passes in the question and then returns true or false for yes or no
 def yes_no(question):
     valid = ['y', 'n']
     while True:
