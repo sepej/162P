@@ -1,4 +1,4 @@
-# Asks user for integer, validates and returns that integer
+# Asks user for integer, validates if in range and returns that integer
 def get_num_of_names(min_val, max_val):
     while True:
         print("Enter a number between " + str(min_val) + " and " + str(max_val))

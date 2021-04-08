@@ -1,13 +1,18 @@
 from functions import *
 
 def main():
+    # get amount of names to add
     num_of_names = get_num_of_names(5, 20)
+    # init empty array
     name_array = ['']*num_of_names
 
+    # fill array
     fill_array(name_array, num_of_names)
 
+    # display array
     display_array(name_array, num_of_names)
 
+    # binary search 5 times
     for i in range(6):
         print("\nSearch")
         search_value = get_name()
