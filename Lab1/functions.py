@@ -15,6 +15,12 @@ def player_name(player):
     else:
         return 'O'
 
+def player_char(player):
+    if player == 0:
+        return 'X'
+    else:
+        return 'O'
+
 # Display the board
 def show_board(board):
     for idx, value in enumerate(board):
