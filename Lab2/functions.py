@@ -1,8 +1,5 @@
-from globals import *
-
 # Asks user for integer, validates and returns that integer
-def get_integer(min_val, max_val):
-    # Add validation
+def get_num_of_names(min_val, max_val):
     while True:
         print("Enter a number between " + str(min_val) + " and " + str(max_val))
         choice = input()
@@ -16,7 +13,6 @@ def get_integer(min_val, max_val):
             print("Not a number.")
 
 def get_name():
-    # Add validation
     while True:
         print("\nEnter a name:")
         choice = input()
@@ -28,30 +24,29 @@ def insert_array(array, count, value):
     
     index = count - 1
 
+    # move up if item is larger than value
     while index >= 0 and array[index] > value:
         array[index+1] = array[index]
         index -= 1
     
+    # put in the new value and increase count
     array[index+1] = value
     count += 1
     return count
 
-
 # fillArray, add Name
 def fill_array(array, num_of_names):
-    global count
     for i in range(num_of_names):
-        count = insert_array(array, count, get_name())
+        insert_array(array, i, get_name())
 
-def display_array(array):
-    global count
+# display only the array elements that have values
+def display_array(array, count):
     print("\nList of names:")
     for i in range(count):
         print(array[i])
 
 # Binary search, return true if value is present in the array
-def bin_search(array, search_value):
-    global count
+def bin_search(array, count, search_value):
     print("\nPerforming binary search for: " + search_value + "\n")
     min = 0
     max = count - 1
