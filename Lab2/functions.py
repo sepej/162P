@@ -52,12 +52,17 @@ def bin_search(array, count, search_value):
     max = count - 1
     found = False
     
+    # split array in 2 and search each half
     while (max >= min and not found):
+        # get mid index
         mid = (min + max) // 2
+        # if mid == search , then found true
         if array[mid] == search_value:
             found = True
+        # search less than mid
         elif array[mid] < search_value:
             min = mid + 1
+        # search greater than mid
         else:
             max = mid - 1
     return found
