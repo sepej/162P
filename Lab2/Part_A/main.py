@@ -1,3 +1,5 @@
+# Joseph Sepe CS162P Lab 2 Part A
+
 from functions import *
 
 def main():
@@ -13,7 +15,7 @@ def main():
     display_array(name_array, num_of_names)
 
     # binary search 5 times
-    for i in range(6):
+    for i in range(5):
         print("\nSearch")
         search_value = get_name()
         if bin_search(name_array, num_of_names, search_value):

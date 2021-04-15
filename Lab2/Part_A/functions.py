@@ -1,22 +1,27 @@
 # Asks user for integer, validates if in range and returns that integer
 def get_num_of_names(min_val, max_val):
-    while True:
+    num_of_names = 0
+    while (num_of_names not in range(min_val, max_val+1)):
         print("Enter a number between " + str(min_val) + " and " + str(max_val))
-        choice = input()
+        num_of_names = input()
         try:
-            choice = int(choice)
-            if choice in range(min_val, max_val+1):
-                return choice
-            else:
-                print("Not valid. Try again")
+            num_of_names = int(num_of_names)
         except ValueError:
             print("Not a number.")
+    return num_of_names
 
+# get a name, check if not an empty string
 def get_name():
-    while True:
+    name = ""
+    name_valid = False
+    while (name_valid == False):
         print("\nEnter a name:")
-        choice = input()
-        return choice
+        name = input()
+        if name != "":
+            name_valid = True
+        else:
+            print("Please enter a name.")
+    return name
         
 def insert_array(array, count, value):
     if count >= len(array):
