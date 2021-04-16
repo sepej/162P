@@ -31,8 +31,5 @@ def main():
             
     # End of game loop #
 
-
-
-
 if __name__ == "__main__":
     main()
