@@ -1,3 +1,6 @@
+# Joseph Sepe
+# Spring 2021 Lab 4 dictionaries and CSV files
+
 import csv
 
 def main():
