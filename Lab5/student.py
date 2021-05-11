@@ -9,14 +9,14 @@ class Student:
         return self.__name
     
     def set_name(self, name):
-        self.name = name
+        self.__name = name
 
     # getter and setter for grade
     def get_grade(self):
         return self.__grade
 
     def set_grade(self, grade):
-        self.grade = grade
+        self.__grade = grade
 
     # display the student
     def display_student(self):

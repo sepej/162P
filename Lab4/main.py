@@ -4,42 +4,18 @@
 import csv
 
 def main():
-    # define the dictionary
-    students = {
-        1: {
-            'Name': 'Bob', 
-            'Lnumber': 'L00312', 
-            'GPA': 3.4
-        },
-        2: {
-            'Name': 'Sue', 
-            'Lnumber': 'L00526', 
-            'GPA': 3.9
-        },
-        3: {
-            'Name': 'Mary', 
-            'Lnumber': 'L00497', 
-            'GPA': 4.1
-        },
-        4: {
-            'Name': 'Bill', 
-            'Lnumber': 'L00274', 
-            'GPA': 3.8
-        },
-        5: {
-            'Name': 'Ann', 
-            'Lnumber': 'L00456', 
-            'GPA': 3.5
-        },
-        6: {
-            'Name': 'Fred', 
-            'Lnumber': 'L00963', 
-            'GPA': 2.6
-        }
-    }
+    # lists of data
+    Lnumbers = ["L00312", "L00526", "L00497", "L00274", "L00456", "L00963"]
+    Names = ["Bob", "Sue", "Mary", "Bill", "Ann", "Fred"]
+    GPA = [3.4, 3.9, 4.1, 3.8, 3.5, 2.6]
+
+    # dynamically create dictionary from lists
+    students = {}
+    for idx, x in enumerate(Lnumbers):
+        students[idx] = {'Lnumber': Lnumbers[idx], 'Name': Names[idx],'GPA': GPA[idx]}
 
     # open or create the file
-    with open('students.csv', mode='w') as students_file:
+    with open('students.csv', mode='w', newline='') as students_file:
         fieldnames = ['Lnumber', 'Name', 'GPA']
 
         # reference https://docs.python.org/3/library/csv.html#csv.DictWriter
